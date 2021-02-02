@@ -12,15 +12,8 @@ spec:
       ports:
         - containerPort: 80
           name: web
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-          - matchExpressions:
-              - key: type
-                operator: NotIn
-                values:
-                  - virtual-node
+  nodeSelector:
+    cluster-name: second cluster
 ---
 apiVersion: v1
 kind: Pod
@@ -36,15 +29,9 @@ spec:
       ports:
         - containerPort: 80
           name: web
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-          - matchExpressions:
-              - key: type
-                operator: In
-                values:
-                  - virtual-node
+  nodeSelector:
+    cluster-name: first-cluster        
+  
 ---
 apiVersion: v1
 kind: Service
