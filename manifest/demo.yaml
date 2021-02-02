@@ -13,7 +13,7 @@ spec:
         - containerPort: 80
           name: web
   nodeSelector:
-    cluster-name: second cluster
+    cluster-name: second-cluster
 ---
 apiVersion: v1
 kind: Pod
